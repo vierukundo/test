@@ -1,10 +1,20 @@
 #!/usr/bin/python3
 """Definition of BaseModel class"""
+import sqlalchemy
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
 from uuid import uuid4
 from datetime import datetime
+from models import storage
+
+Base = declarative_base()
 
 class BaseModel:
     """BaseModel class representation"""
+    id = Column(String(60), primary_key=True, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+
     def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
         date_format = '%Y-%m-%dT%H:%M:%S.%f'
@@ -32,6 +42,8 @@ class BaseModel:
         updates attribute updated_at - with the current datetime
         """
         self.updated_at = datetime.now()
+        storage.new(self)
+        storage.save()
     
     def to_dict(self):
         """
@@ -42,6 +54,8 @@ class BaseModel:
         objects["created_at"] = self.created_at.isoformat()
         objects["updated_at"] = self.updated_at.isoformat()
         objects["__class__"] = self.__class__.__name__
+        if "_sa_instance_state" in objects:
+            del objects["_sa_instance_state"]
 
         return objects
     
