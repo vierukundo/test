@@ -1,7 +1,11 @@
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationshi
 
 
 class Money(BaseModel):
     """Representation of money"""
-    financing_options = relationship
-    blog = None
+    __tablename__ = 'money'
+    # financing_options = relationship
+    blog = Column(BLOB, nullable=False)

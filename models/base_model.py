@@ -64,3 +64,7 @@ class BaseModel:
         Return the string representation of this class
         """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
+    def delete(self):
+        """Delete the current instance from the storage"""
+        storage.delete(self)
