@@ -6,4 +6,4 @@ class Management(BaseModel):
     project_name = ""
     start_date = ""
     end_date = ""
-    gantt_chart = relationship
+    # gantt_chart = relationship

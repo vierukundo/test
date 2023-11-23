@@ -1,9 +1,9 @@
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, BLOB, Boolean, Numeric
 from sqlalchemy.orm import relationship
 
 
-class Material(BaseModel):
+class Material(BaseModel, Base):
     """A representation of construction material"""
     __tablename__ = 'materials'
     name = Column(String(128), nullable=False)

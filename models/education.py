@@ -1,5 +1,6 @@
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, ForeignKey, BLOB
+from datetime import datetime
+from sqlalchemy import Column, Integer, String, ForeignKey, BLOB, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 

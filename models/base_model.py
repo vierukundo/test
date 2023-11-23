@@ -2,10 +2,9 @@
 """Definition of BaseModel class"""
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime
 from uuid import uuid4
 from datetime import datetime
-from models import storage
 
 Base = declarative_base()
 
@@ -41,6 +40,7 @@ class BaseModel:
         """
         updates attribute updated_at - with the current datetime
         """
+        from models import storage
         self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
@@ -67,4 +67,5 @@ class BaseModel:
 
     def delete(self):
         """Delete the current instance from the storage"""
+        from models import storage
         storage.delete(self)

@@ -1,5 +1,5 @@
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, BLOB
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, BLOB, Numeric
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 

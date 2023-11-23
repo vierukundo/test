@@ -1,5 +1,6 @@
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, BLOB, ForeignKey
+from sqlalchemy import Column, Integer, String, BLOB, ForeignKey, LargeBinary
+from sqlalchemy.dialects.mysql import LONGBLOB
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -12,6 +13,6 @@ class Manpower(BaseModel, Base):
     sex = Column(String(128), nullable=False)
     experience = Column(String(128), nullable=False)
     service = Column(String(128), nullable=False)
-    profile = Column(BLOB, nullable=False)
+    profile = Column(LONGBLOB)
     email = Column(String(128), nullable=False)
     contacts = Column(String(128), nullable=False)
