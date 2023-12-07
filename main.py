@@ -19,7 +19,7 @@ profile = res.content if res.ok else None
 manpower_dict = {
         "first_name": "Olivier", "last_name": "RUKUNDO",
         "sex": "Male", "experience": "5 years",
-        "service": "Architect", "profile": None,
+        "service": "Architect", "profile": None, "profile_path": "filename",
         "email": "vierukundo20@gmail.com", "contacts": "+250783464572"
         }
 manpower = Manpower(**manpower_dict)
@@ -30,9 +30,10 @@ manpower.save()
  Verification
 """
 print("")
+from models import storage
 all_manpower = storage.all(Manpower)
 for manpower_id, manpower in all_manpower.items():
-    print(manpower)
+    print(manpower.profile)
     # for city in state.cities:
         # print("Find the city {} in the state {}".format(city, state))
 

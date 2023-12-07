@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Successfull uploaded the file: </h1>
+<ul>
+	{% for obj in objects %}
+	<li>{{ obj.profile_path }}</li>
+	<img src="uploads/{{ obj.profile_path }}" alt="Profile Image, width="100px", height="100px"">
+	{% endfor %}
+</ul>
+{% for ob in objects %}
+<img src="{{ url_for('uploaded_file', filename=ob.profile_path) }}" alt="Profile Image" width="100px", height="100px">
+{% endfor %}
+
+{% endblock %}
