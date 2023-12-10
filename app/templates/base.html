@@ -1,21 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+		<script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
 		{% if title %}
-		<title>{{ title }} - Microblog</title>
+		<title>{{ title }} - 5MS</title>
 		{% else %}
-		<title>Welcome to Microblog</title>
+		<title>Welcome to 5MS</title>
 		{% endif %}
 	</head>
 	<body>
-		<div>
-			5MS: <a href="{{ url_for('index') }}">Home</a>
-			{% if current_user.is_anonymous %}
-			<a href="{{ url_for('login') }}">Login</a>
-			{% else %}
-			<a href="{{ url_for('logout') }}">Logout</a>
-			{% endif %}
-		</div>
-		<hr>
+		<header class="nav">
+			<div>
+				<img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+			</div>
+			<nav>
+				<a href="{{ url_for('index') }}">Home</a>
+				<a href="manpower.html">Manpower</a>
+				<a href="materials.html">Materials</a>
+				<a href="machinery.html">Machinery</a>
+				<a href="money.html">Money</a>
+				<a href="management.html">Management</a>
+			</nav>
+			<div class="login_logout">
+				{% if current_user.is_anonymous %}
+				<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+				{% else %}
+				<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+				{% endif %}
+			</div>
+		</header>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		<ul>
@@ -26,5 +41,28 @@
 		{% endif %}
 		{% endwith %}
 		{% block content %}{% endblock %}
+		<footer>
+		<div class="footerContainer">
+			<div class="socialIcons">
+				<a href=""><i class="fa-brands fa-facebook"></i></a>
+				<a href=""><i class="fa-brands fa-instagram"></i></a>
+				<a href=""><i class="fa-brands fa-twitter"></i></a>
+				<a href=""><i class="fa-brands fa-linkedin"></i></a>
+				<a href=""><i class="fa-brands fa-youtube"></i></a>
+			</div>
+			<div class="footerNav">
+				<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">Opportunities</a></li>
+					<li><a href="">About Us</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="">Our Team</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footerBottom">
+			<p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+                </div>
+		</footer>
 	</body>
 </html>

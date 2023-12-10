@@ -6,6 +6,9 @@ from sqlalchemy.dialects.mysql import LONGBLOB
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
+from time import time
+import jwt
+from app import app
 
 
 class User(BaseModel, UserMixin, Base):
@@ -25,6 +28,22 @@ class User(BaseModel, UserMixin, Base):
     def check_password(self, password):
         # return check_password_hash(self.password_hash, password)
         return (self.password_hash == password)
+
+    def get_reset_password_token(self, expires_in=600):
+        jwt_bytes = jwt.encode(
+                {'reset_password': self.id, 'exp': time() + expires_in},
+                app.config['SECRET_KEY'], algorithm='HS256')
+        return jwt_bytes
+
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['reset_password']
+        except:
+            return
+        from app.models import storage
+        user = storage.load_user_by_id(User, id)
+        return user
 
 @login.user_loader
 def load_user(id):
