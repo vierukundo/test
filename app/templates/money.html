@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='money.css') }}">
+    <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+    <title>5MS:MONEY</title>
+</head>
+<body>
+    <header class="nav">
+        <div>
+            <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('manpowers') }}">Manpower</a>
+            <a href="{{ url_for('materials') }}">Materials</a>
+            <a href="{{ url_for('machineries') }}">Machinery</a>
+            <a href="{{ url_for('money') }}">Money</a>
+            <a href="{{ url_for('management') }}">Management</a>
+        </nav>
+	<div class="login_logout">
+		{% if current_user.is_anonymous %}
+		<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+		{% else %}
+		<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+		{% endif %}
+	</div>
+    </header>
+
+
+    <h1>5MS: MONEY</h1>
+
+    <!-- First Segment -->
+    <div class="segment">
+        <h2>Get a BQ/Quote/Cost Forecast for your upcoming project.</h2>
+        <button>ORDER NOW</button>
+        <div id="slider">
+            <!-- Add your slider images here -->
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+            <img src="image5.jpg" alt="Image 5">
+        </div>
+    </div>
+
+    <!-- Second Segment -->
+    <div class="segment">
+        <h2>Financing Options Around You</h2>
+        <!-- Blog Articles -->
+        <div class="blog-article">
+            <img src="article1.jpg" alt="Article 1">
+            <p>Short text for article 1.</p>
+            <button>Read More</button>
+        </div>
+        <div class="blog-article">
+            <img src="article2.jpg" alt="Article 2">
+            <p>Short text for article 2.</p>
+            <button>Read More</button>
+        </div>
+        <div class="blog-article">
+            <img src="article3.jpg" alt="Article 3">
+            <p>Short text for article 3.</p>
+            <button>Read More</button>
+        </div>
+        <div class="blog-article">
+            <img src="article4.jpg" alt="Article 4">
+            <p>Short text for article 4.</p>
+            <button>Read More</button>
+        </div>
+    </div>
+
+    <!-- Last Segment -->
+    <div class="segment">
+        <h2>Blog Articles</h2>
+        <!-- Add at least 3 more blog articles here -->
+        <div class="blog-article">
+            <img src="article5.jpg" alt="Article 5">
+            <p>Short text for article 5.</p>
+            <button>Read More</button>
+        </div>
+        <div class="blog-article">
+            <img src="article6.jpg" alt="Article 6">
+            <p>Short text for article 6.</p>
+            <button>Read More</button>
+        </div>
+        <div class="blog-article">
+            <img src="article7.jpg" alt="Article 7">
+            <p>Short text for article 7.</p>
+            <button>Read More</button>
+        </div>
+    </div>
+    <footer>
+            <div class="footerContainer">
+                    <div class="socialIcons">
+                            <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                            <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                            <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Opportunities</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="">Our Team</a></li>
+                            </ul>
+                    </div>
+            </div>
+            <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+            </div>
+    </footer>
+</body>
+
+</html>

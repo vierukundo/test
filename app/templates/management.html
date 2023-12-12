@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='management.css') }}">
+    <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+    <title>5MS: MANAGEMENT</title>
+</head>
+<body>
+
+    <header class="nav">
+        <div>
+            <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('manpowers') }}">Manpower</a>
+            <a href="{{ url_for('materials') }}">Materials</a>
+            <a href="{{ url_for('machineries') }}">Machinery</a>
+            <a href="{{ url_for('money') }}">Money</a>
+            <a href="{{ url_for('management') }}">Management</a>
+        </nav>
+	<div class="login_logout">
+		{% if current_user.is_anonymous %}
+		<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+		{% else %}
+		<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+		{% endif %}
+	</div>
+    </header>
+
+
+    <h1>5MS: MANAGEMENT</h1>
+
+    <div id="manageProjects">
+        <P>Manage your Project(s) with ease:</P>
+        <button onclick="addActivity()">Add Activity</button>
+        <button onclick="createNewProject()">Create New Project</button>
+    </div>
+
+    <div id="myProjects">
+        <h2>My Projects</h2>
+        <div id="projectsContainer">
+            <!-- Sample Project Profiles -->
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Start Date: 2023-01-01</p>
+                <p>End Date: 2023-02-01</p>
+                <p>Required: 10 tasks</p>
+                <button onclick="showProjectDetails('Project 1')">More</button>
+            </div>
+
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Start Date: 2023-03-01</p>
+                <p>End Date: 2023-04-01</p>
+                <p>Required: 15 tasks</p>
+                <button onclick="showProjectDetails('Project 2')">More</button>
+            </div>
+
+            <div class="project">
+                <h3>Project 3</h3>
+                <p>Start Date: 2023-05-01</p>
+                <p>End Date: 2023-06-01</p>
+                <p>Required: 20 tasks</p>
+                <button onclick="showProjectDetails('Project 3')">More</button>
+            </div>
+        </div>
+        <button id="moreProjectsBtn" onclick="loadMoreProjects()">More Projects</button>
+    </div>
+
+    <div id="projectDetails" style="display: none;">
+        <h2 id="projectName">Project Name</h2>
+        <div class="activity" id="upcomingActivities">
+            <h3>Upcoming Activities</h3>
+            <!-- Activities will be dynamically populated here -->
+        </div>
+        <div class="activity" id="currentActivities">
+            <h3>Current Activities</h3>
+            <!-- Activities will be dynamically populated here -->
+        </div>
+        <div class="activity" id="pastActivities">
+            <h3>Past Activities</h3>
+            <!-- Activities will be dynamically populated here -->
+        </div>
+    </div>
+
+    <div id="blogArticles">
+        <h2>Blog Articles</h2>
+        <!-- Sample Blog Articles -->
+        <div class="blogArticle">
+            <h3>Article 1</h3>
+            <p>Published on: 2023-01-15</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="blogArticle">
+            <h3>Article 2</h3>
+            <p>Published on: 2023-02-20</p>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="blogArticle">
+            <h3>Article 3</h3>
+            <p>Published on: 2023-03-25</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+    </div>
+    <footer>
+            <div class="footerContainer">
+                    <div class="socialIcons">
+                            <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                            <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                            <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Opportunities</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="">Our Team</a></li>
+                            </ul>
+                    </div>
+            </div>
+            <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+            </div>
+    </footer>
+    <script>
+        function addActivity() {
+            // Logic to handle adding activity
+            console.log('Add Activity clicked');
+        }
+
+        function createNewProject() {
+            // Logic to handle creating a new project
+            console.log('Create New Project clicked');
+        }
+
+        function showProjectDetails(projectName) {
+            // Logic to show project details based on the selected project
+            document.getElementById('projectName').innerText = projectName;
+            document.getElementById('projectDetails').style.display = 'block';
+        }
+
+        function loadMoreProjects() {
+            // Logic to load more projects
+            console.log('Load More Projects clicked');
+        }
+    </script>
+
+</body>
+</html>

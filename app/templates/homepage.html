@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5MS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+    <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+        </div>
+        <nav>
+	    <a href="{{ url_for('index') }}">Home</a>
+	    <a href="{{ url_for('manpowers') }}">Manpower</a>
+            <a href="{{ url_for('materials') }}">Materials</a>
+            <a href="{{ url_for('machineries') }}">Machinery</a>
+            <a href="{{ url_for('money') }}">Money</a>
+            <a href="{{ url_for('management') }}">Management</a>
+        </nav>
+	<div class="login_logout">
+		{% if current_user.is_anonymous %}
+		<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+		{% else %}
+		<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+		{% endif %}
+	</div>
+    </header>
+
+    <!-- Segment 1: Home -->
+    <div class="segment1">
+        <div class="text">
+            <h2>"5MS: Where Efficiency Meets Construction"</h2>
+        </div>
+    </div>
+
+    </div>
+
+    <h2>Our Services</h2>
+    <!-- Segment 3: Our Services -->
+    <div class="ourservices">
+        
+        <div class="services">
+            <div class="Manpower">
+                <button src="5Ms/Manpower.html">Manpower</button>
+                <img src="https://s0.hfdstatic.com/sites/the_hartford/pubimgs/1444710507089.jpg?v=2021-03-25_134005564" alt="Manpower Icon" width="150" height="120">
+                <p>Hire all types of skilled, semi-skilled and unskilled manpower around you. Architects, Engineers, Contractors, Foremen, Masons, Specialised works, etc</p>
+            </div>
+            <div class="Materials">
+                <button>Materials</button>
+                <img src="https://5.imimg.com/data5/AU/ON/VU/SELLER-66247023/building-construction-material-500x500.jpg" alt="Manpower Icon" width="150" height="120">
+                <p>Purchase any construction material from a wide pool of vendors. Hardwares, Distributors, Manufacturers, Independent sellers, etc</p>
+            </div>
+            <div class="Machinery">
+                <button>Machinery</button>
+                <img src="https://i.ytimg.com/vi/B-w7ZYZnErM/maxresdefault.jpg" alt="Manpower Icon" width="200" height="150">
+                <p>Hire/buy any tool you need for your project. See available vendors around you.</p>
+            </div>
+            <div class="Money">
+                <button>Money</button>
+                <img src="https://www.ecoconcrete.co.ke/wp-content/uploads/2022/07/construction-deposit.jpg" alt="Manpower Icon" width="150" height="120">
+                <p>Get a BQ, View project financing options around you & many more</p>
+            </div>
+            <div class="Management">
+                <button>Management</button>
+                <img src="https://stonemarkcm.com/wp-content/uploads/2018/03/Top-10-Benefits-Professional-Construction-Management.jpg" alt="Manpower Icon" width="150" height="120">
+                <p>Optimize your day to day operations with our scheduling tool</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Segment 2: About Us -->
+       <div class="aboutus">
+	<div class="aboutText">
+	  <input type="checkbox" id="check">
+	  <h2>About us</h2>
+	  <p>Welcome to 5Ms. With a strategic fusion of Materials, Manpower, Machinery, Money, and Management, we redefine the landscape of construction, ensuring precision, timeliness, and cost-effectiveness.</p> <p class="content">At 5Ms, we orchestrate projects with a symphony of resources, harmonizing the essential elements to deliver unparalleled results. Our commitment lies in seamlessly blending these pillars, crafting a narrative where every structure is a testament to the synergy of the 5Ms, where efficiency is not just a goal but a standard we uphold with unwavering dedication. Welcome to a construction experience where excellence meets execution. </p>
+<label for="check">Read More</label>
+	</div>
+
+	<div class="video">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/4F1vAmvrD10?si=yCCgTaD7bx8OjwFP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</div>
+    </div>
+    <!-- Segment 4: Articles -->
+    <div class="articles">
+        <h2>Blog</h2>
+        <div class="blog-snippet">
+            <h3>Bamburi Cement Commences Construction Of Two Solar PV Plants</h3>
+            <p>NAIROBI, Kenya Nov 30 - Bamburi Cement Plc is embarking on the construction of two solar photovoltaic (PV) power plants,...</p>
+            <p class="full-content" style="display: none;">Bamburi Cement Plc is set to construct two solar photovoltaic power plants, contributing up to 30% of its total power supply in Kenya. The 14.5MW and 5MW plants in Mombasa and Athi River, respectively, represent the country's largest commercial solar project by a cement company. Agreements with MOMNAI Energy have been signed, securing financing and allowing construction to begin. The initiative aligns with Bamburi Cement's commitment to decarbonization, aiming for net-zero carbon emissions by 2050, with the project expected to reduce costs and enhance energy sustainability.</p>
+            <span class="read-more" onclick="toggleContent(this)">Read More</span>
+            <img src="" >
+        </div>
+        <div class="blog-snippet">
+            <h3>Sameer starts construction of Sh260 million warehouse</h3>
+            <p>Sameer Africa has begun the construction of a ‘built-to-suit’ industrial warehouse within its Nairobi complex, marking a significant leap towards its expansion strategy. The facility is slated to commence operations by mid-2024. The property boasts a robust infrastructure, including a 10 MVA installed electrical power supported by reliable 66kV transmission lines, high-speed and reliable fibre connectivity and ample utility water sourced from dedicated boreholes with backup storage. It also has an in-house property management team dedicated to ensuring seamless operations. According to Sameer Africa Managing Director John Mugo, the tailor-made project has been crafted to align with its tenant’s distinct needs, encompassing considerations of size, layout, features, and functionality.</p>
+            <p class="full-content" style="display: none;">Full content for the second blog post.</p>
+            <span class="read-more" onclick="toggleContent(this)">Read More</span>
+        </div>
+        <!-- Add more blog snippets as needed -->
+    </div>
+
+    <!-- The rest of your page content goes here -->
+    <footer>
+	    <div class="footerContainer">
+		    <div class="socialIcons">
+			    <a href=""><i class="fa-brands fa-facebook"></i></a>
+			    <a href=""><i class="fa-brands fa-instagram"></i></a>
+			    <a href=""><i class="fa-brands fa-twitter"></i></a>
+			    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+			    <a href=""><i class="fa-brands fa-youtube"></i></a>
+		    </div>
+		    <div class="footerNav">
+			    <ul>
+				    <li><a href="">Home</a></li>
+				    <li><a href="">Opportunities</a></li>
+				    <li><a href="">About Us</a></li>
+				    <li><a href="">Contact Us</a></li>
+				    <li><a href="">Our Team</a></li>
+			    </ul>
+		    </div>
+	    </div>
+	    <div class="footerBottom">
+		    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+	    </div>
+    </footer>
+</body>
+</html>
+
