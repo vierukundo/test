@@ -6,22 +6,16 @@ from flask import request
 from werkzeug.urls import url_parse
 from app import app
 from app.models.user import User
+import os
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    posts = [
-            {
-                'author': {'username': 'John'},
-                'body': 'Beautiful day in Portland!'
-                },
-            {
-                'author': {'username': 'Susan'},
-                'body': 'The Avengers movie was so cool!'
-                }
-            ]
-    return render_template('index.html', title='Home Page', posts=posts)
+    images_folder = '/home/rukundo/test/app/static/images'
+    images = os.listdir(images_folder)
+    images_path = [f'images/{image}' for image in images if image.startswith('profile')]
+    return render_template('homepage.html', title='Home Page', images=images_path)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -87,3 +81,39 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/materials')
+def materials():
+    images_folder = '/home/rukundo/test/app/static/images'
+    images = os.listdir(images_folder)
+    images_path = [f'images/{image}' for image in images]
+    return render_template('materials.html', images=images_path)
+
+@app.route('/machineries')
+def machineries():
+    images_folder = '/home/rukundo/test/app/static/images'
+    images = os.listdir(images_folder)
+    images_path = [f'images/{image}' for image in images]
+    return render_template('machinery.html', images=images_path)
+
+@app.route('/management')
+def management():
+    return render_template('management.html')
+
+@app.route('/money')
+def money():
+    return render_template('money.html')
+
+@app.route('/manpowers')
+def manpowers():
+    images_folder = '/home/rukundo/test/app/static/images'
+    images = os.listdir(images_folder)
+    images_path = [f'images/{image}' for image in images]
+    return render_template('manpower.html', images=images_path)
+
+@app.route('/search_results')
+def search_results():
+    query = request.args.get('query')
+    page_name = request.args.get('page')
+
+    return {page_name: query}

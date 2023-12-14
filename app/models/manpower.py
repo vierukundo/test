@@ -13,7 +13,6 @@ class Manpower(BaseModel, Base):
     sex = Column(String(128), nullable=False, default="Male")
     experience = Column(String(128), nullable=False, default="2 years")
     service = Column(String(128), nullable=False, default="Engineer")
-    # profile = Column(LONGBLOB)
-    profile_path = Column(String(128), nullable=False)
+    profile = Column(String(128), nullable=False)
     email = Column(String(128), nullable=False, default="vierukundo20@gmail.com")
     contacts = Column(String(128), nullable=False, default="0783464572")

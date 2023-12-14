@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5MS: MATERIALS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='materials.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='materials.css') }}">
+    <title>Document</title>
 </head>
 <body>
+
     <header class="nav">
         <div>
             <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
@@ -20,95 +22,109 @@
             <a href="{{ url_for('money') }}">Money</a>
             <a href="{{ url_for('management') }}">Management</a>
         </nav>
-	<div class="login_logout">
-		{% if current_user.is_anonymous %}
-		<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
-		{% else %}
-		<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
-		{% endif %}
-	</div>
+        <div class="login_logout">
+                {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+                {% else %}
+                <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+                {% endif %}
+        </div>
     </header>
 
-    <h1>5MS: MATERIALS</h1>
+    <h1>Welcome to 5Ms, your premier destination for all your construction needs!</h1>
 
-    <!-- POPULAR Segment -->
-    <h2>POPULAR</h2>
-    <div class="profile">
-        <div>
-            <img src="path/to/popular1.jpg" alt="Vendor 1">
-            <p>Type: Type 1</p>
-            <p>Category: Popular</p>
-            <p>Product(s): Product 1, Product 2, Product 3</p>
-            <p>Price: $100 - $200</p>
-        </div>
-        <div>
-            <img src="path/to/popular2.jpg" alt="Vendor 2">
-            <p>Type: Type 2</p>
-            <p>Category: Popular</p>
-            <p>Product(s): Product A, Product B, Product C</p>
-            <p>Price: $50 - $150</p>
-        </div>
-        <div>
-            <img src="path/to/popular3.jpg" alt="Vendor 3">
-            <p>Type: Type 3</p>
-            <p>Category: Popular</p>
-            <p>Product(s): Product X, Product Y, Product Z</p>
-            <p>Price: $80 - $180</p>
-        </div>
-    </div>    
+    <p>Whether you're looking to build, buy, or rent, we've got you covered. Explore our extensive catalog of high-quality construction materials available for purchase or rent. From top-tier tools to premium building supplies, find everything you need to bring your projects to life. Let's build something extraordinary together!
+    </p>
+    <div>
+	    <form action="{{ url_for('search_results') }}" method="GET">
+		    <input type="text" name="query" placeholder="Search...">
+		    <input type="hidden" name="page" value="materials.html">
+		    <button type="submit">Search</button>
+	    </form>
 
-    <!-- GENERAL HARDWARES Segment -->
-    <h2>GENERAL HARDWARES</h2>
-    <div class="profile">
-        <div>
-            <img src="path/to/hardware1.jpg" alt="Vendor 4">
-            <p>Type: Type 4</p>
-            <p>Category: General Hardwares</p>
-            <p>Product(s): Hardware 1, Hardware 2, Hardware 3</p>
-            <p>Price: $120 - $250</p>
-        </div>
-        <div>
-            <img src="path/to/hardware2.jpg" alt="Vendor 5">
-            <p>Type: Type 5</p>
-            <p>Category: General Hardwares</p>
-            <p>Product(s): Hardware X, Hardware Y, Hardware Z</p>
-            <p>Price: $90 - $200</p>
-        </div>
-        <div>
-            <img src="path/to/hardware3.jpg" alt="Vendor 6">
-            <p>Type: Type 6</p>
-            <p>Category: General Hardwares</p>
-            <p>Product(s): Tool A, Tool B, Tool C</p>
-            <p>Price: $60 - $150</p>
-        </div>
     </div>
+    <!-- Popular Segment -->
+    <h2 class="category">POPULAR</h2>
 
-    <!-- CEMENT VENDORS Segment -->
-    <h2>CEMENT VENDORS</h2>
-    <div class="profile">
-        <div>
-            <img src="path/to/cementVendor1.jpg" alt="Vendor 7">
-            <p>Type: Type 4</p>
-            <p>Category: Cement Vendors</p>
-            <p>Product(s): Cement 1, Cement 2, Cement 3</p>
-            <p>Price: $120 - $250</p>
+    <section>
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper content">
+		{% for image in images %}
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                        </div>
+                        <div class="name-profession">
+                            <span class="name">Name of material</span>
+                            <span class="profession">category or usage</span>
+                            <span class="profession">Price: $50 - $150</span>
+                            <span class="profession">For sell or Rent</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">Usage</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+              </div>
+          </div>
+            </div>
         </div>
-        <div>
-            <img src="path/to/cementVendor2.jpg" alt="Vendor 8">
-            <p>Type: Type 5</p>
-            <p>Category: Cement Vendors</p>
-            <p>Product(s): Cement X, Cement Y, Cement Z</p>
-            <p>Price: $90 - $200</p>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+    
+    <!-- general Segment -->
+    <h2 class="category">GENERAL HARDWARES</h2>
+
+    <section>
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper content">
+		{% for image in images %}
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                        </div>
+                        <div class="name-profession">
+                            <span class="name">Name of material</span>
+                            <span class="profession">category or usage</span>
+                            <span class="profession">Price: $50 - $150</span>
+                            <span class="profession">For sell or Rent</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">Usage</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+              </div>
+          </div>
+            </div>
         </div>
-        <div>
-            <img src="path/to/cementVendor3.jpg" alt="Vendor 9">
-            <p>Type: Type 6</p>
-            <p>Category: Cement Vendors</p>
-            <p>Product(s): Cement Name</p>
-            <p>Price: $6</p>
-        </div>
-    </div>
-    <!-- Repeat the above structure for other segments: STEEL VENDORS, MECHANICAL & PLUMBING VENDORS, ELECTRICAL VENDORS, ALUMINIUM & GLASS VENDORS, TIMBER VENDORS, and EARTH MATERIALS VENFORS -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+
     <footer>
             <div class="footerContainer">
                     <div class="socialIcons">
@@ -132,5 +148,40 @@
                     <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
             </div>
     </footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script defer>
+  console.log("Script is running !!");
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    centeredSlides: false,
+    slidesPerGroupSkip: 1,
+    grabCursor: true,
+    keyboard: {
+      enabled: true,
+    },
+    breakpoints: {
+      769: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+      },
+    },
+    scrollbar: {
+      el: ".swiper-scrollbar",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
 </body>
 </html>

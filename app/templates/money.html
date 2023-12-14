@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='money.css') }}">
     <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
     <title>5MS:MONEY</title>
@@ -30,21 +31,27 @@
 	</div>
     </header>
 
-
-    <h1>5MS: MONEY</h1>
-
+    <h1> Welcome to our comprehensive guide on construction financing options and sources. </h1>
+<p>Building your dream project requires not just creativity and craftsmanship but also strategic financial planning. 
+Our company offers a range of options for handling and managing your project funds. We provide access to various financial options in your vicinity, and our experts can assist you in obtaining the Bill of Quantities (BQ) for your construction project. Additionally, we provide access to diverse blog articles that elaborate on various financing sources.
+ </p>
     <!-- First Segment -->
     <div class="segment">
         <h2>Get a BQ/Quote/Cost Forecast for your upcoming project.</h2>
-        <button>ORDER NOW</button>
-        <div id="slider">
-            <!-- Add your slider images here -->
-            <img src="image1.jpg" alt="Image 1">
-            <img src="image2.jpg" alt="Image 2">
-            <img src="image3.jpg" alt="Image 3">
-            <img src="image4.jpg" alt="Image 4">
-            <img src="image5.jpg" alt="Image 5">
-        </div>
+	<div>
+		<p>
+
+In the construction industry, "BQ" typically refers to a "Bill of Quantities." A Bill of Quantities is a document used in the tendering process in construction projects. It provides a detailed list of the quantities and descriptions of the materials, labor, and other items required to complete a construction project based on the architectural and engineering drawings. Essentially, it is a comprehensive inventory of the work to be done and the materials to be used. Curious about how BQ is like? here is the template:
+		</p>
+	</div>
+	<div class="BQ">
+		<img src="https://www.quantity-takeoff.com/img/boq-in-construction.jpg" alt="BQ format">
+		<div class="BQ-section">
+			<p>To get the BQ for your specific construction project, click the button below. Our team will make wise BQ based on your project expections.
+			</p>
+			<button id="button">Request BQ here!</button>
+		</div>
+	</div>
     </div>
 
     <!-- Second Segment -->
@@ -52,25 +59,64 @@
         <h2>Financing Options Around You</h2>
         <!-- Blog Articles -->
         <div class="blog-article">
-            <img src="article1.jpg" alt="Article 1">
-            <p>Short text for article 1.</p>
-            <button>Read More</button>
+  <!-- Swiper -->
+
+  <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
+    <div class="parallax-bg" style="
+          background-image: url(https://i1.sndcdn.com/artworks-000233670573-ezm81p-t500x500.jpg);
+        " data-swiper-parallax="-23%"></div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="title" data-swiper-parallax="-300">Slide 1</div>
+        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+        <div class="text" data-swiper-parallax="-100">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+            laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+            Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+            Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+            tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+          </p>
         </div>
-        <div class="blog-article">
-            <img src="article2.jpg" alt="Article 2">
-            <p>Short text for article 2.</p>
-            <button>Read More</button>
+      </div>
+      <div class="swiper-slide">
+        <div class="title" data-swiper-parallax="-300">Slide 2</div>
+        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+        <div class="text" data-swiper-parallax="-100">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+            laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+            Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+            Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+            tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+          </p>
         </div>
-        <div class="blog-article">
-            <img src="article3.jpg" alt="Article 3">
-            <p>Short text for article 3.</p>
-            <button>Read More</button>
+      </div>
+      <div class="swiper-slide">
+        <div class="title" data-swiper-parallax="-300">Slide 3</div>
+        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+        <div class="text" data-swiper-parallax="-100">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+            laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+            Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+            Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+            tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+          </p>
         </div>
-        <div class="blog-article">
-            <img src="article4.jpg" alt="Article 4">
-            <p>Short text for article 4.</p>
-            <button>Read More</button>
-        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </div>
     </div>
 
     <!-- Last Segment -->
@@ -78,19 +124,40 @@
         <h2>Blog Articles</h2>
         <!-- Add at least 3 more blog articles here -->
         <div class="blog-article">
-            <img src="article5.jpg" alt="Article 5">
-            <p>Short text for article 5.</p>
-            <button>Read More</button>
-        </div>
-        <div class="blog-article">
-            <img src="article6.jpg" alt="Article 6">
-            <p>Short text for article 6.</p>
-            <button>Read More</button>
-        </div>
-        <div class="blog-article">
-            <img src="article7.jpg" alt="Article 7">
-            <p>Short text for article 7.</p>
-            <button>Read More</button>
+		<p>
+		Ready to turn your construction dreams into reality? Explore the links below and embark on your personalized path to financial success. Our curated blog series tackles every financing angle, empowering both seasoned developers and first-time homeowners. Explore diverse options, master budgeting strategies, and navigate local market nuances. Click through, unlock your project's potential, and watch your dream rise brick by brick!
+		</p>
+		<ul>
+			<li> 
+				<a href="https://ppp.worldbank.org/public-private-partnership/financing/mechanisms">
+					Main Financing Mechanisms for Infrastructure Projects
+				</a>
+			</li>
+			<li> 
+				<a href="https://www.builderspace.com/common-sources-of-construction-financing">
+					8 Common Sources of Construction Financing
+				</a>
+			</li>
+			<li> 
+				<a href="https://www.growthink.com/businessplan/help-center/funding-for-construction-business">
+					12 Types of Funding for a Construction Business
+				</a>
+			</li>
+			<li> 
+				<a href="https://ppp.worldbank.org/public-private-partnership/financing/investors-developing-countries">
+					Investors in Infrastructure in Developing Countries
+				</a>
+			</li>
+		</ul>
+	    <p>
+If specific options aren't a perfect fit for your region or project, don't fret! Adaptation is key. Use the knowledge you gain here to tailor these solutions to your specific needs. Remember, financial creativity is just as important as architectural ingenuity.
+	    </p>
+            <p>
+However, While our blog series provides a comprehensive toolbox for construction financing, we know possibilities extend beyond these pages. Remember, your project is unique, and the best funding solution might not be neatly packaged in a blog post.
+	    </p>
+	    <p>
+	    So, keep exploring! Network with local builders, tap into community resources, and consider alternative solutions like grants or bartering. Every path to financial success deserves exploration.
+	    </p>
         </div>
     </div>
     <footer>
@@ -116,6 +183,29 @@
                     <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
             </div>
     </footer>
+
+<!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      speed: 600,
+      parallax: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 </body>
 
 </html>

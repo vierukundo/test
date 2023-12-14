@@ -1,0 +1,120 @@
+@import url('base.css');
+
+.segment {
+	padding: 20px;
+	background: #E03888;
+}
+.blog-article {
+	padding-bottom: 20px;
+}
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    .swiper-slide {
+      font-size: 18px;
+      color: #fff;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 40px 60px;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 130%;
+      height: 100%;
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .swiper-slide .title {
+      font-size: 41px;
+      font-weight: 300;
+    }
+
+    .swiper-slide .subtitle {
+      font-size: 21px;
+    }
+
+    .swiper-slide .text {
+      font-size: 14px;
+      max-width: 400px;
+      line-height: 1.3;
+    }
+ 
+h1, h2 {
+	text-align: center;
+}
+
+body p {
+	margin: 20px;
+}
+
+ul {
+	line-height: 2;
+}
+
+ul li a {
+	color: blue;
+	text-decoration: none;
+}
+ul li a:hover {
+	color: blue;
+	text-decoration: underline;
+	opacity: 0.8;
+	font-size: 16px;
+}
+
+.BQ {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#button {
+	background: yellow;
+	border-radius: 20px;
+}
+.BQ-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	margin-left: 30px;
+}
+body p {
+	font-size: 16px;
+}
+
+.swiper-button-next {
+	position: absolute;
+	right: 0px;
+}
+.swiper-button-prev {
+	position: absolute;
+	left: 0px;
+}
+.swiper-slide {
+	margin: 0px 30px;
+}

@@ -1,0 +1,30 @@
+@import url('base.css');
+
+h2 {
+	color: #333;
+}
+button {
+	padding: 10px;
+	margin: 5px;
+	cursor: pointer;
+}
+#projectsContainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+.project {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px;
+	width: 30%;
+}
+
+#moreProjectsBtn {
+	align-self: flex-end;
+	margin-top: 10px;
+}
+.activity {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px 0;
+}

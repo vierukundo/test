@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='machinery.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
-    <title>5MS: MACHINERY</title>    
+    <link rel="stylesheet" href="{{ url_for('static', filename='machinery.css') }}">
+    <title>Document</title>
 </head>
 <body>
+
     <header class="nav">
         <div>
             <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
@@ -20,104 +22,166 @@
             <a href="{{ url_for('money') }}">Money</a>
             <a href="{{ url_for('management') }}">Management</a>
         </nav>
-	<div class="login_logout">
-		{% if current_user.is_anonymous %}
-		<a href="{{ url_for('login') }}" class="login_register_button">Login</a>
-		{% else %}
-		<a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
-		{% endif %}
-	</div>
+        <div class="login_logout">
+                {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+                {% else %}
+                <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+                {% endif %}
+        </div>
     </header>
+
+    <h1>Welcome to 5Ms, your premier destination for all your construction needs!</h1>
+    <p>
+    Whether you're looking to build, buy, or rent, we've got you covered. Explore our extensive catalog of high-quality construction machineries available for purchase or rent. From top-tier tools to premium building supplies, find everything you need to bring your projects to life. Let's build something extraordinary together!
+    </p>
+    <!-- Popular Segment -->
+    <div>
+	    <form action="{{ url_for('search_results') }}" method="GET">
+		    <input type="text" name="query" placeholder="Search...">
+		    <input type="hidden" name="page" value="machinery.html">
+		    <button type="submit">Search</button>
+	    </form>
+
+    </div>
+    <h2 class="category">POPULAR</h2>
+
+    <section>
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper content">
+		{% for image in images %}
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                        </div>
+                        <div class="name-profession">
+                            <span class="name">Name of material</span>
+                            <span class="profession">category or usage</span>
+                            <span class="profession">Price: $50 - $150</span>
+                            <span class="profession">For sell or Rent</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">Usage</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+              </div>
+          </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
     
-    <h1>5MS: MACHINERY</h1>
+    <!-- general Segment -->
+    <h2 class="category">GENERAL HARDWARES</h2>
 
-    <!-- POPULAR Segment -->
-    <div class="segment">
-        <h2>POPULAR</h2>
-
-        <!-- Profile 1 -->
-        <div class="profile">
-            <img src="popular1.jpg" alt="Popular Equipment 1">
-            <p>Type: Type 1</p>
-            <p>Category: Category 1</p>
-            <p>Equipment: Equipment 1</p>
-            <p>Price: $100.00</p>
+    <section>
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper content">
+		{% for image in images %}
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                        </div>
+                        <div class="name-profession">
+                            <span class="name">Name of material</span>
+                            <span class="profession">category or usage</span>
+                            <span class="profession">Price: $50 - $150</span>
+                            <span class="profession">For sell or Rent</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">Usage</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+              </div>
+          </div>
+            </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
 
-        <!-- Profile 2 -->
-        <div class="profile">
-            <img src="popular2.jpg" alt="Popular Equipment 2">
-            <p>Type: Type 2</p>
-            <p>Category: Category 2</p>
-            <p>Equipment: Equipment 2</p>
-            <p>Price: $120.00</p>
-        </div>
-
-        <!-- Profile 3 -->
-        <div class="profile">
-            <img src="popular3.jpg" alt="Popular Equipment 3">
-            <p>Type: Type 3</p>
-            <p>Category: Category 3</p>
-            <p>Equipment: Equipment 3</p>
-            <p>Price: $90.00</p>
-        </div>
-    </div>
-
-    <!-- GENERAL HARDWARES Segment -->
-    <div class="segment">
-        <h2>GENERAL HARDWARES</h2>
-
-        <!-- Profile 1 -->
-        <div class="profile">
-            <img src="hardware1.jpg" alt="Hardware 1">
-            <p>Type: Type 1</p>
-            <p>Category: Category 1</p>
-            <p>Equipment: Equipment 1</p>
-            <p>Price: $80.00</p>
-        </div>
-
-        <!-- Profile 2 -->
-        <div class="profile">
-            <img src="hardware2.jpg" alt="Hardware 2">
-            <p>Type: Type 2</p>
-            <p>Category: Category 2</p>
-            <p>Equipment: Equipment 2</p>
-            <p>Price: $110.00</p>
-        </div>
-
-        <!-- Profile 3 -->
-        <div class="profile">
-            <img src="hardware3.jpg" alt="Hardware 3">
-            <p>Type: Type 3</p>
-            <p>Category: Category 3</p>
-            <p>Equipment: Equipment 3</p>
-            <p>Price: $95.00</p>
-        </div>
-    </div>
-
-    <!-- Add similar segments for HAND TOOLS, POWER TOOLS, SITE EQUIPMENT & SAFETY, ROAD & PAVING EQUIPMENT, DRILLING & PILING EQUIPMENT -->
     <footer>
-	    <div class="footerContainer">
-		    <div class="socialIcons">
-			    <a href=""><i class="fa-brands fa-facebook"></i></a>
-			    <a href=""><i class="fa-brands fa-instagram"></i></a>
-			    <a href=""><i class="fa-brands fa-twitter"></i></a>
-			    <a href=""><i class="fa-brands fa-linkedin"></i></a>
-			    <a href=""><i class="fa-brands fa-youtube"></i></a>
-		    </div>
-		    <div class="footerNav">
-			    <ul>
-				    <li><a href="">Home</a></li>
-				    <li><a href="">Opportunities</a></li>
-				    <li><a href="">About Us</a></li>
-				    <li><a href="">Contact Us</a></li>
-				    <li><a href="">Our Team</a></li>
-			    </ul>
-		    </div>
-	    </div>
-	    <div class="footerBottom">
-		    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
-	    </div>
+            <div class="footerContainer">
+                    <div class="socialIcons">
+                            <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                            <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                            <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Opportunities</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="">Our Team</a></li>
+                            </ul>
+                    </div>
+            </div>
+            <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+            </div>
     </footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script defer>
+  console.log("Script is running !!");
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    centeredSlides: false,
+    slidesPerGroupSkip: 1,
+    grabCursor: true,
+    keyboard: {
+      enabled: true,
+    },
+    breakpoints: {
+      769: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+      },
+    },
+    scrollbar: {
+      el: ".swiper-scrollbar",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
 </body>
 </html>
