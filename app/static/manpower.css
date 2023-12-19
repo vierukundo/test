@@ -2,28 +2,24 @@
 @import url('base.css');
 
 h1 {
-	text-align: center;
-	color: #333;
+        text-align: center;
+        color: #333;
 }
 
 h2 {
-	border-bottom: 2px solid #333;
-	padding-bottom: 5px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
 }
 
 .category {
-	text-align: left;
-	border-bottom: 2px solid #333;
-	padding-bottom: 5px;
+        text-align: left;
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+}
+.wlcm_msg, .intro, .search {
+        padding: 10px;
 }
 
-header {
-	position: relative;
-	top: 0;
-	width: 100%;
-}
-footer {
-	position: relative;
-	bottom: 0;
-	width: 100%;
+.intro, .search {
+        margin-left: 20px;
 }

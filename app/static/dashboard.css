@@ -1,0 +1,31 @@
+@import url('base.css');
+div.menu {
+  position: relative;
+  width: 200px;
+  background: #7d2ae8;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+div.menu ul {
+  list-style: none;
+  padding: 30px 0;
+}
+
+div.menu ul li {
+  padding: 10px 20px;
+}
+
+div.menu ul li:hover {
+  color: #fff;
+  cursor: pointer;
+}
+div.body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  background: #E03888;
+}
+div.body h1 {
+  padding: 30px;
+}

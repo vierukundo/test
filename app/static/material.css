@@ -1,0 +1,33 @@
+@import url('style.css');
+@import url('base.css');
+
+h1 {
+        text-align: center;
+        color: #333;
+}
+
+h2 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+}
+
+.category {
+        text-align: left;
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+}
+.wlcm_msg, .intro, .search {
+        padding: 10px;
+}
+
+.intro, .search {
+        margin-left: 20px;
+}
+.card .image {
+	border-radius: 10px;
+	width: 200px;
+	height: 180px;
+}
+.card .image img {
+	border-radius: 10px;
+}

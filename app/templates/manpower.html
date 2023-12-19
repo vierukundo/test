@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='manpower.css') }}">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='manpower.css') }}">
+  <!-- Demo styles -->
 </head>
+
 <body>
 
     <header class="nav">
@@ -31,29 +35,28 @@
         </div>
     </header>
 
-    <h1>Build Your Dream Team: Find the Perfect Manpower for Your Project!</h1>
+    <h1 class="wlcm_msg">Build Your Dream Team: Find the Perfect Manpower for Your Project!</h1>
     <!-- Popular Segment -->
-    <p>
+    <p class="intro">
     Need a skilled team to bring your project to fruition? Discover our dedicated section for hiring experienced and reliable manpower. From carpenters and electricians to project managers, we offer a pool of talented professionals ready to contribute their expertise to your success.
     </p>
-    <div>
+    <div class="search">  
 	    <form action="{{ url_for('search_results') }}" method="GET">
 		    <input type="text" name="query" placeholder="Search...">
-		    <input type="hidden" name="page" value="{{ page_name }}">
+		    <input type="hidden" name="page" value="manpower">
 		    <button type="submit">Search</button>
 	    </form>
 
     </div>
     <h1 class="category">POPULAR</h1>
-
-    <section>
-        <div class="swiper mySwiper container">
-            <div class="swiper-wrapper content">
-		{% for image in images %}
-                <div class="swiper-slide card">
+<!-- Popular -->
+  <div class="swiper mySwiper container">
+    <div class="swiper-wrapper content">
+      {% for manpower in manpowers %}
+      <div class="swiper-slide card">
                     <div class="card-content">
                         <div class="image">
-				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                                <img src="{{ url_for('static', filename=manpower.profile) }}" alt="alx">
                         </div>
                         <div class="media-icons">
                             <i class="fa-brands fa-facebook"></i>
@@ -61,8 +64,9 @@
                             <i class="fa-brands fa-linkedin"></i>
                         </div>
                         <div class="name-profession">
-                            <span class="name">some name</span>
-                            <span class="profession">Web developer</span>
+                                <span class="name">{{ manpower.first_name + ' ' + manpower.last_name }}</span>
+                                <span class="profession">{{ manpower.profession }}</span>
+                                <span class="location">{{ manpower.city + ', ' + manpower.country }}</span>
                         </div>
                         <div class="rating">
                             <i class="fa-solid fa-star"></i>
@@ -76,28 +80,25 @@
                             <button class="hireMe">Hire Me</button>
                         </div>
                     </div>
-                </div>
-		{% endfor %}
-              </div>
-          </div>
-            </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </section>
-    
-    <!-- general Segment -->
-    <h1 class="category">REGULAR</h1>
-
-    <section>
-        <div class="swiper mySwiper container">
-            <div class="swiper-wrapper content">
-		{% for image in images %}
-                <div class="swiper-slide card">
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+<!-- Categories -->
+  <h1 class="category">CATEGORIES</h1>
+  {% for category in categories %}
+  <h1 class="category">{{ category + 's'}}</h1>
+  <div class="swiper mySwiper container">
+    <div class="swiper-wrapper content">
+      {% for manpower in manpowers %}
+      {% if manpower.profession == category %}
+      <div class="swiper-slide card">
                     <div class="card-content">
                         <div class="image">
-				<img src="{{ url_for('static', filename=image) }}" alt="alx">
+                                <img src="{{ url_for('static', filename=manpower.profile) }}" alt="alx">
                         </div>
                         <div class="media-icons">
                             <i class="fa-brands fa-facebook"></i>
@@ -105,8 +106,9 @@
                             <i class="fa-brands fa-linkedin"></i>
                         </div>
                         <div class="name-profession">
-                            <span class="name">some name</span>
-                            <span class="profession">Web developer</span>
+                                <span class="name">{{ manpower.first_name + ' ' + manpower.last_name }}</span>
+                                <span class="profession">{{ manpower.profession }}</span>
+                                <span class="location">{{ manpower.city + ', ' + manpower.country }}</span>
                         </div>
                         <div class="rating">
                             <i class="fa-solid fa-star"></i>
@@ -120,17 +122,15 @@
                             <button class="hireMe">Hire Me</button>
                         </div>
                     </div>
-                </div>
-		{% endfor %}
-              </div>
-          </div>
-            </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </section>
-
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  {% endfor %}
     <footer>
             <div class="footerContainer">
                     <div class="socialIcons">
@@ -146,7 +146,7 @@
                                     <li><a href="">Opportunities</a></li>
                                     <li><a href="">About Us</a></li>
                                     <li><a href="">Contact Us</a></li>
-                                    <li><a href="">Our Team</a></li>
+                                    <li><a href="{{ url_for('dash') }}">New Entry</a></li>
                             </ul>
                     </div>
             </div>
@@ -154,40 +154,26 @@
                     <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
             </div>
     </footer>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script defer>
-  console.log("Script is running !!");
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    centeredSlides: false,
-    slidesPerGroupSkip: 1,
-    grabCursor: true,
-    keyboard: {
-      enabled: true,
-    },
-    breakpoints: {
-      769: {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
       },
-    },
-    scrollbar: {
-      el: ".swiper-scrollbar",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-</script>
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 </body>
+
 </html>
+

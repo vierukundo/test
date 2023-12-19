@@ -10,6 +10,7 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'alxafrica19@gmail.com'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'letwichifdptgsbi'
     ADMINS = ['vierukundo20@gmail.com']
+    UPLOAD_FOLDER = '/home/rukundo/test/app/static/images'
 
 # 'wqgr zaan bdxa czhu'
 

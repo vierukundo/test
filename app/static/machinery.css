@@ -2,8 +2,13 @@
 @import url('base.css');
 
 h1 {
-	color: #333;
-	text-align: center;
+        text-align: center;
+        color: #333;
+}
+
+h2 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
 }
 
 .category {
@@ -11,31 +16,19 @@ h1 {
         border-bottom: 2px solid #333;
         padding-bottom: 5px;
 }
-.profile {
-	border: 1px solid #ddd;
-	padding: 10px;
-	margin: 10px;
-	text-align: center;
-	display: flex;
-	flex-wrap: wrap;
-}
-.profile div {
-	flex: 1;
-	margin: 10px;
-	padding: 20px;
-	border: 1px solid #ccc;
-	text-align: center;
-}
-img {
-	max-width: 100%;
-	height: auto;
+.wlcm_msg, .intro, .search {
+        padding: 10px;
 }
 
-section .card .image,
-section .card .image img {
-	border-radius: 10px;
+.intro, .search {
+        margin-left: 20px;
 }
-section .card .image {
+
+.card .image {
+	border-radius: 10px;
 	width: 200px;
 	height: 180px;
+}
+.card .image img {
+	border-radius: 10px;
 }

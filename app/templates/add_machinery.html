@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dash_machinery.css') }}">
+  <title>Add machinery</title>
+</head>
+<body>
+  <header class="nav">
+    <div>
+        <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('manpowers') }}">Manpower</a>
+        <a href="{{ url_for('materials') }}">Materials</a>
+        <a href="{{ url_for('machineries') }}">Machinery</a>
+        <a href="{{ url_for('money') }}">Money</a>
+        <a href="{{ url_for('management') }}">Management</a>
+    </nav>
+    <div class="login_logout">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+            {% endif %}
+    </div>
+</header>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+	{% for message in messages %}
+	<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="body">
+<div class="menu">
+  <ul class="side-menu">
+	  <li><a href="{{ url_for('add_manpower') }}">Manpower entry</a></li>
+	  <li><a href="{{ url_for('add_material') }}">Material entry</a></li>
+	  <li><a href="{{ url_for('add_machinery') }}">Machinery entry</a></li>
+	  <li><a href="{{ url_for('add_money') }}">Money entry</a></li>
+  </ul>
+</div>
+<div class="entry-form">
+<h1>Forget about dusty catalogs, introduce your machineries online! Complete the Machinery Entry form and connect with contractors and builders directly.</h1>
+    <div class="container">
+        <h1>Add Machinery</h1>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label }} {{ form.name() }}
+		{% for error in form.name.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.category.label }} {{ form.category() }}
+		{% for error in form.category.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.picture.label }} {{ form.picture() }}
+		{% for error in form.picture.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.rent.label }} {{ form.rent() }}
+		{% for error in form.rent.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.price.label }} {{ form.price() }}
+		{% for error in form.price.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.description.label }} {{ form.description() }}
+		{% for error in form.description.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.tutorial_video.label }} {{ form.tutorial_video() }}
+		{% for error in form.tutorial_video.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.vendor.label }} {{ form.vendor() }}
+		{% for error in form.vendor.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.vendor_email.label }} {{ form.vendor_email() }}
+		{% for error in form.vendor_email.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.vendor_contacts.label }} {{ form.vendor_contacts() }}
+		{% for error in form.vendor_contacts.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group check-box">
+                {{ form.vendor_country.label }} {{ form.vendor_country() }}
+		{% for error in form.vendor_country.errors %}
+		<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<footer>
+  <div class="footerContainer">
+          <div class="socialIcons">
+                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                  <a href=""><i class="fa-brands fa-twitter"></i></a>
+                  <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                  <a href=""><i class="fa-brands fa-youtube"></i></a>
+          </div>
+          <div class="footerNav">
+                  <ul>
+                          <li><a href="">Home</a></li>
+                          <li><a href="">Opportunities</a></li>
+                          <li><a href="">About Us</a></li>
+                          <li><a href="">Contact Us</a></li>
+                          <li><a href="{{ url_for('dash') }}">New Entry</a></li>
+                  </ul>
+          </div>
+  </div>
+  <div class="footerBottom">
+          <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+  </div>
+</footer>
+</body>
+</html>

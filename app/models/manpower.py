@@ -1,5 +1,5 @@
 from app.models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, BLOB, ForeignKey, LargeBinary
+from sqlalchemy import Column, Integer, String, BLOB, ForeignKey, Float
 from sqlalchemy.dialects.mysql import LONGBLOB
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -8,11 +8,16 @@ from sqlalchemy.orm import relationship
 class Manpower(BaseModel, Base):
     """Representation of a manpower"""
     __tablename__ = 'manpowers'
-    first_name = Column(String(128), nullable=False, default="Olivier")
-    last_name = Column(String(128), nullable=False, default="RUKUNDO")
-    sex = Column(String(128), nullable=False, default="Male")
-    experience = Column(String(128), nullable=False, default="2 years")
-    service = Column(String(128), nullable=False, default="Engineer")
+    first_name = Column(String(128), nullable=False, default=None)
+    last_name = Column(String(128), nullable=False, default=None)
+    sex = Column(String(128), nullable=False, default=None)
+    experience = Column(String(128), nullable=False, default=None)
+    profession = Column(String(128), nullable=False, default=None)
     profile = Column(String(128), nullable=False)
-    email = Column(String(128), nullable=False, default="vierukundo20@gmail.com")
-    contacts = Column(String(128), nullable=False, default="0783464572")
+    email = Column(String(128), nullable=False, default=None)
+    contacts = Column(String(128), nullable=False, default=None)
+    country = Column(String(128), nullable=False, default=None)
+    city = Column(String(128), nullable=False, default=None)
+    date_of_birth = Column(String(128), nullable=False, default=None)
+    cv = Column(String(128), nullable=False, default=None)
+    wage_per_hour = Column(String(128), nullable=False, default=None)

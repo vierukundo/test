@@ -1,0 +1,81 @@
+@import url('base.css');
+div.menu {
+  position: relative;
+  width: 200px;
+  background: #7d2ae8;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+div.menu ul {
+  list-style: none;
+  padding: 30px 0;
+}
+
+div.menu ul li {
+  padding: 10px 20px;
+}
+
+div.menu ul li:hover {
+  color: #fff;
+  cursor: pointer;
+}
+div.body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  background: #E03888;
+}
+div.body h1 {
+  padding: 30px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;  /* Adjust the max-width based on your design preference */
+    margin: 20px 50px;
+    width: 400px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;  /* Set the direction to row */
+    align-items: center;  /* Align items vertically */
+}
+
+/* Adjust label width and margin for better alignment */
+.form-group label {
+    flex: 1;  /* Allow the label to take as much space as needed */
+    margin-right: 10px;  /* Add some spacing between label and input/select */
+}
+
+/* Set input/select/textarea width to take the remaining space */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    flex: 2;  /* Allow the input/select/textarea to take more space */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.check-box {
+	width: auto;
+	padding-left: 0;
+}

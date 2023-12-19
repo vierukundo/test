@@ -7,5 +7,5 @@ from sqlalchemy.orm import relationship
 class Money(BaseModel, Base):
     """Representation of money"""
     __tablename__ = 'money'
-    # financing_options = relationship
-    blog = Column(BLOB, nullable=False)
+    financing_option = Column(String(1024), nullable=True, default=None)
+    blog = Column(String(255), nullable=True, default=None)

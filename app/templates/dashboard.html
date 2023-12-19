@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <title>Dashboard</title>
+</head>
+<body>
+  <header class="nav">
+    <div>
+        <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('manpowers') }}">Manpower</a>
+        <a href="{{ url_for('materials') }}">Materials</a>
+        <a href="{{ url_for('machineries') }}">Machinery</a>
+        <a href="{{ url_for('money') }}">Money</a>
+        <a href="{{ url_for('management') }}">Management</a>
+    </nav>
+    <div class="login_logout">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+            {% endif %}
+    </div>
+</header>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="body">
+<div class="menu">
+  <ul class="side-menu">
+    <li><a href="{{ url_for('add_manpower') }}">Manpower entry</a></li>
+    <li><a href="{{ url_for('add_material') }}">Material entry</a></li>
+    <li><a href="{{ url_for('add_machinery') }}">Machinery entry</a></li>
+    <li><a href="{{ url_for('add_money') }}">Money entry</a></li>
+  </ul>
+</div>
+<div class="entry-form">
+        <h1>
+                Welocome to 5MS entry dashboard! Here you can make new entry to Manpower, Materials, Machineries as well as Money.
+        </h1>
+</div>
+</div>
+<footer>
+  <div class="footerContainer">
+          <div class="socialIcons">
+                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                  <a href=""><i class="fa-brands fa-twitter"></i></a>
+                  <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                  <a href=""><i class="fa-brands fa-youtube"></i></a>
+          </div>
+          <div class="footerNav">
+                  <ul>
+                          <li><a href="">Home</a></li>
+                          <li><a href="">Opportunities</a></li>
+                          <li><a href="">About Us</a></li>
+                          <li><a href="">Contact Us</a></li>
+                          <li><a href="">Our Team</a></li>
+                  </ul>
+          </div>
+  </div>
+  <div class="footerBottom">
+          <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+  </div>
+</footer>
+</body>
+</html>

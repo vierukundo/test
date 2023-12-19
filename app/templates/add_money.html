@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dash_money.css') }}">
+  <title>Money entry</title>
+</head>
+<body>
+  <header class="nav">
+    <div>
+        <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('manpowers') }}">Manpower</a>
+        <a href="{{ url_for('materials') }}">Materials</a>
+        <a href="{{ url_for('machineries') }}">Machinery</a>
+        <a href="{{ url_for('money') }}">Money</a>
+        <a href="{{ url_for('management') }}">Management</a>
+    </nav>
+    <div class="login_logout">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+            {% endif %}
+    </div>
+</header>
+<div class="body">
+<div class="menu">
+  <ul class="side-menu">
+	  <li><a href="{{ url_for('add_manpower') }}">Manpower entry</a></li>
+	  <li><a href="{{ url_for('add_material') }}">Material entry</a></li>
+	  <li><a href="{{ url_for('add_machinery') }}">Machinery entry</a></li>
+	  <li><a href="{{ url_for('add_machinery') }}">Money entry</a></li>
+  </ul>
+</div>
+<div class="entry-form">
+<h1>Want to empower your construction crew with the financial knowledge they need? Fill out this form to share details about local loans, credit programs, or budgeting tools available to them!
+
+	<br><br>If you have a helpful blog article about crafting smart financial solutions for construction projects, feel free to share the link in the blog section below. Your insights could be invaluable for your colleagues!</h1>
+<!-- money_form.html -->
+
+<div class="container">
+    <h1>Add Money</h1>
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.financing_option.label }} {{ form.financing_option() }}
+            {% if form.financing_option.errors %}
+                <span class="error">{{ form.financing_option.errors | join(', ') }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.blog.label }} {{ form.blog() }}
+            {% if form.blog.errors %}
+                <span class="error">{{ form.blog.errors | join(', ') }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+		<button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+</div>
+</div>
+<footer>
+  <div class="footerContainer">
+          <div class="socialIcons">
+                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                  <a href=""><i class="fa-brands fa-twitter"></i></a>
+                  <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                  <a href=""><i class="fa-brands fa-youtube"></i></a>
+          </div>
+          <div class="footerNav">
+                  <ul>
+                          <li><a href="">Home</a></li>
+                          <li><a href="">Opportunities</a></li>
+                          <li><a href="">About Us</a></li>
+                          <li><a href="">Contact Us</a></li>
+			  <li><a href="{{ url_for('dash') }}">New Entry</a></li>
+                  </ul>
+          </div>
+  </div>
+  <div class="footerBottom">
+          <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+  </div>
+</footer>
+</body>
+</html>

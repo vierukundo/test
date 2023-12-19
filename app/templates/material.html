@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Materials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://kit.fontawesome.com/50227cdd13.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='material.css') }}">
+  <!-- Demo styles -->
+</head>
+
+<body>
+
+    <header class="nav">
+        <div>
+            <img src="https://aoc.com/img/static/porsche/icons/AFL_5ms_CMYK.png" alt="Your Logo" id="logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('manpowers') }}">Manpower</a>
+            <a href="{{ url_for('materials') }}">Materials</a>
+            <a href="{{ url_for('machineries') }}">Machinery</a>
+            <a href="{{ url_for('money') }}">Money</a>
+            <a href="{{ url_for('management') }}">Management</a>
+        </nav>
+        <div class="login_logout">
+                {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}" class="login_register_button">Login</a>
+                {% else %}
+                <a href="{{ url_for('logout') }}" class="login_register_button">Logout</a>
+                {% endif %}
+        </div>
+    </header>
+
+    <h1 class="wlcm_msg">Welcome to 5Ms, your premier destination for all your construction needs!</h1>
+    <!-- Popular Segment -->
+    <p class="intro">
+Whether you're looking to build, buy, or rent, we've got you covered. Explore our extensive catalog of high-quality construction materials available for purchase or rent. From top-tier tools to premium building supplies, find everything you need to bring your projects to life. Let's build something extraordinary together!
+    </p>
+    <div class="search">  
+	    <form action="{{ url_for('search_results') }}" method="GET">
+		    <input type="text" name="query" placeholder="Search...">
+		    <input type="hidden" name="page" value="{{ page_name }}">
+		    <button type="submit">Search</button>
+	    </form>
+
+    </div>
+    <h1 class="category">POPULAR</h1>
+<!-- Popular -->
+  <div class="swiper mySwiper container">
+    <div class="swiper-wrapper content">
+      {% for material in materials %}
+      <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                                <img src="{{ url_for('static', filename=material.picture) }}" alt="alx">
+                        </div>
+                        <div class="media-icons">
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div class="name-profession">
+                                <span class="name">{{ material.name }}</span>
+                                <span class="profession">Price: {{ material.price }} USD</span>
+                                <span class="location">Location: {{ material.vendor_country }}</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">About Me</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+<!-- Categories -->
+  <h1 class="category">CATEGORIES</h1>
+  {% for category in categories %}
+  <h1 class="category">{{ category }}</h1>
+  <div class="swiper mySwiper container">
+    <div class="swiper-wrapper content">
+      {% for material in materials %}
+      {% if material.category == category %}
+      <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                                <img src="{{ url_for('static', filename=material.picture) }}" alt="alx">
+                        </div>
+                        <div class="media-icons">
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div class="name-profession">
+                                <span class="name">{{ material.name }}</span>
+                                <span class="profession">Price: {{ material.price }} USD</span>
+                                <span class="location">Location: {{ material.vendor_country }}</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="button">
+                            <button class="aboutMe">About Me</button>
+                            <button class="hireMe">Order Now</button>
+                        </div>
+                    </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  {% endfor %}
+    <footer>
+            <div class="footerContainer">
+                    <div class="socialIcons">
+                            <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                            <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                            <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Opportunities</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="{{ url_for('dash') }}">New Entry</a></li>
+                            </ul>
+                    </div>
+            </div>
+            <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer"> Moses and Olivier</span></p>
+            </div>
+    </footer>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+</body>
+
+</html>
+

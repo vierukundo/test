@@ -7,9 +7,13 @@ class Material(BaseModel, Base):
     """A representation of construction material"""
     __tablename__ = 'materials'
     name = Column(String(128), nullable=False)
-    picture = Column(BLOB, nullable=False)
+    category = Column(String(128), nullable=False)
+    picture = Column(String(255), nullable=True, default=None) # store path to picture
     rent = Column(Boolean, default=False)
     price = Column(Numeric(precision=10, scale=2))
     description = Column(String(1024), nullable=False)
-    tutorial_video = Column(BLOB)
-    # locations = relationship("Location", backref="material", cascade="delete")
+    tutorial_video = Column(String(255), nullable=True, default=None) # store path to video that demonstrates how material is used
+    vendor = Column(String(255), nullable=True, default=None)
+    vendor_email = Column(String(255), nullable=True, default=None)
+    vendor_contacts = Column(String(255), nullable=True, default=None)
+    vendor_country = Column(String(255), nullable=True, default=None)
