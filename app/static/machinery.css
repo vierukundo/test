@@ -32,3 +32,6 @@ h2 {
 .card .image img {
 	border-radius: 10px;
 }
+.results_not_found {
+        padding: 30px;
+}

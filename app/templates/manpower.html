@@ -48,10 +48,13 @@
 	    </form>
 
     </div>
+    {% if manpowers %}
     <h1 class="category">POPULAR</h1>
+    {% endif %}
 <!-- Popular -->
   <div class="swiper mySwiper container">
     <div class="swiper-wrapper content">
+      {% if manpowers %}
       {% for manpower in manpowers %}
       <div class="swiper-slide card">
                     <div class="card-content">
@@ -82,13 +85,18 @@
                     </div>
       </div>
       {% endfor %}
+      {% else %}
+      <p class="results_not_found">No results found!!</p>
+      {% endif %}
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
   </div>
 <!-- Categories -->
+  {% if categories %}
   <h1 class="category">CATEGORIES</h1>
+  {% endif %}
   {% for category in categories %}
   <h1 class="category">{{ category + 's'}}</h1>
   <div class="swiper mySwiper container">

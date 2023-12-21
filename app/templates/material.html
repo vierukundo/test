@@ -43,15 +43,17 @@ Whether you're looking to build, buy, or rent, we've got you covered. Explore ou
     <div class="search">  
 	    <form action="{{ url_for('search_results') }}" method="GET">
 		    <input type="text" name="query" placeholder="Search...">
-		    <input type="hidden" name="page" value="{{ page_name }}">
+		    <input type="hidden" name="page" value="material">
 		    <button type="submit">Search</button>
 	    </form>
-
     </div>
+    {% if materials %}
     <h1 class="category">POPULAR</h1>
+    {% endif %}
 <!-- Popular -->
   <div class="swiper mySwiper container">
     <div class="swiper-wrapper content">
+      {% if materials %}
       {% for material in materials %}
       <div class="swiper-slide card">
                     <div class="card-content">
@@ -82,13 +84,18 @@ Whether you're looking to build, buy, or rent, we've got you covered. Explore ou
                     </div>
       </div>
       {% endfor %}
+      {% else %}
+      <p class="results_not_found">No results found!!</p>
+      {% endif %}
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
   </div>
 <!-- Categories -->
+  {% if categories %}
   <h1 class="category">CATEGORIES</h1>
+  {% endif %}
   {% for category in categories %}
   <h1 class="category">{{ category }}</h1>
   <div class="swiper mySwiper container">

@@ -44,15 +44,18 @@ Forget about dusty catalogs, introduce your machineries online! Complete profile
     <div class="search">  
 	    <form action="{{ url_for('search_results') }}" method="GET">
 		    <input type="text" name="query" placeholder="Search...">
-		    <input type="hidden" name="page" value="{{ page_name }}">
+		    <input type="hidden" name="page" value="machinery">
 		    <button type="submit">Search</button>
 	    </form>
 
     </div>
+    {% if machineries %}
     <h1 class="category">POPULAR</h1>
+    {% endif %}
 <!-- Popular -->
   <div class="swiper mySwiper container">
     <div class="swiper-wrapper content">
+      {% if machineries %}
       {% for machinery in machineries %}
       <div class="swiper-slide card">
                     <div class="card-content">
@@ -83,13 +86,18 @@ Forget about dusty catalogs, introduce your machineries online! Complete profile
                     </div>
       </div>
       {% endfor %}
+      {% else %}
+      <p class="results_not_found">No results found!!</p>
+      {% endif %}
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
   </div>
 <!-- Categories -->
+  {% if categories %}
   <h1 class="category">CATEGORIES</h1>
+  {% endif %}
   {% for category in categories %}
   <h1 class="category">{{ category }}</h1>
   <div class="swiper mySwiper container">

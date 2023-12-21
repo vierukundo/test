@@ -23,3 +23,6 @@ h2 {
 .intro, .search {
         margin-left: 20px;
 }
+.results_not_found {
+        padding: 30px;
+}
