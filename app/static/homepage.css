@@ -23,8 +23,6 @@
 }
 .aboutus {
 	margin: 0px;
-	background-color: #E03888;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 22px;
 	display: flex;
 }
@@ -75,7 +73,7 @@ div.aboutText p.content {
 label {
 	display: inline-block;
 	margin-top: 15px;
-	color: #fff;
+	/*color: #fff;*/
 	text-decoration: underline;
 	cursor: pointer;
 	font-weight: 600;
@@ -84,13 +82,13 @@ label {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 20px;
-	background-color: burlywood;
+	margin-top: 5px;
+	padding-top: 0;
 }
 .ourservices div {
 	flex: 1;
-	margin: 10px;
-	padding: 20px;
-	border: 1px solid #ccc;
+	margin: 0 10px;
+	padding: 20px 5px;
 	text-align: center;
 }
 .segment {
@@ -116,11 +114,16 @@ label {
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
+
+.services img {
+	width: 180px;
+	height: 180px;
+}
+
 /* Styling for child divs within '.services' */
 .service {
 	width: 30%;
 	margin-bottom: 20px;
-	border: 1px solid #ccc;
 	padding: 20px;
 	text-align: center;
 }
@@ -247,6 +250,10 @@ h1, h2, h3, h4 {
   font-size: 12px;
   text-align: right;
 }
+.testi p {
+	color: #eee;
+	font-size: 16px;
+}
 
 @media screen and (min-width: 768px) {
   .testi .wrapper {
@@ -267,9 +274,8 @@ body {
 }
 
 body {
+  background: #E03888;
   background: #eee;
-  background: gray;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -284,7 +290,6 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,4 +316,35 @@ div.swiper, .swiper-wrapper, .swiper-slide {
 label {
 	position: relative;
 	bottom: 40px;
+}
+.services div {
+	background: #7d2ae8;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background: #E03888;
+	padding: 10px;
+	color: #eee;
+}
+.services div a {
+	margin-bottom: 10px;
+	width: 100px;
+	background: yellow;
+	outline: none;
+	border: 3px solid #7d2ae8;
+	border-radius: 20px;
+	text-decoration: none;
+}
+.services div a:hover {
+	background: #fff;
+	color: black;
+	cursor: pointer;
+}
+.services div p {
+	text-align: left;
+	font-weight: 600;
+}
+
+h2 {
+	text-align: center;
 }
