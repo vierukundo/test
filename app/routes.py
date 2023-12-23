@@ -1,3 +1,4 @@
+"""Imports of all required modules"""
 from flask import render_template, flash, redirect, url_for
 from app.email import send_password_reset_email
 from flask_login import current_user, login_user, login_required, logout_user
@@ -16,12 +17,14 @@ from urllib.parse import quote, unquote
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4', 'avi'}
 
 def allowed_file(filename):
-        return '.' in filename and \
-                           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    """checks if the uploaded file is allowed"""
+    return '.' in filename and \
+            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 @app.route('/index', strict_slashes=False)
 def index():
+    """defines route to homepage"""
     images_folder = '/home/rukundo/test/app/static/images'
     images = os.listdir(images_folder)
     images_path = [f'images/{image}' for image in images if image.startswith('profile')]
@@ -29,6 +32,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login():
+    """Routes to login page"""
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
@@ -47,11 +51,13 @@ def login():
 
 @app.route('/logout', strict_slashes=False)
 def logout():
+    """Defines routes to logout. it redirects user to homepage"""
     logout_user()
     return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'], strict_slashes=False)
 def register():
+    """defines routes to register"""
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
@@ -65,6 +71,7 @@ def register():
 
 @app.route('/reset_password_request', methods=['GET', 'POST'], strict_slashes=False)
 def reset_password_request():
+    """route that allows user to reset password, it sents reset request to user email"""
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = ResetPasswordRequestForm()
@@ -79,6 +86,7 @@ def reset_password_request():
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'], strict_slashes=False)
 def reset_password(token):
+    """This route allows user to create new password"""
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     user = User.verify_reset_password_token(token)
@@ -95,6 +103,7 @@ def reset_password(token):
 @app.route('/materials', strict_slashes=False)
 @app.route('/materials/<query>', strict_slashes=False)
 def materials(query=None):
+    """Defines route to materials"""
     from app.models import storage
     from app.models.material import Material
     materials_dict = storage.all(Material)
@@ -121,6 +130,7 @@ def materials(query=None):
 @app.route('/machineries', strict_slashes=False)
 @app.route('/machineries/<query>', strict_slashes=False)
 def machineries(query=None):
+    """defines a route to machineries"""
     from app.models import storage
     from app.models.machinery import Machinery
     machineries_dict = storage.all(Machinery)
@@ -146,15 +156,18 @@ def machineries(query=None):
 
 @app.route('/management', strict_slashes=False)
 def management():
+    """redirects to management page"""
     return render_template('management.html')
 
 @app.route('/money', strict_slashes=False)
 def money():
+    """Redirects to money page"""
     return render_template('money.html')
 
 @app.route('/manpowers', strict_slashes=False)
 @app.route('/manpowers/<query>', strict_slashes=False)
 def manpowers(query=None):
+    """Redirects to manpowers page"""
     from app.models import storage
     from app.models.manpower import Manpower
     manpowers_dict = storage.all(Manpower)
@@ -180,6 +193,7 @@ def manpowers(query=None):
 
 @app.route('/search_results', strict_slashes=False)
 def search_results():
+    """process the user search query and send it to respective page like manpower"""
     query = request.args.get('query')
     page_name = request.args.get('page')
     classes = {
@@ -195,10 +209,12 @@ def search_results():
 @app.route('/dashboard', strict_slashes=False)
 @login_required
 def dash():
+    """Redirects to dashboard where users create new entries"""
     return render_template('dashboard.html')
 
 @app.route('/add_manpower', methods=['GET', 'POST'], strict_slashes=False)
 def add_manpower():
+    """Redirects to manpower form"""
     form = ManpowerEntryForm()
     if form.validate_on_submit():
         args = {}
@@ -233,6 +249,7 @@ def add_manpower():
 
 @app.route('/add_material', methods=['GET', 'POST'], strict_slashes=False)
 def add_material():
+    """Redirects to material form"""
     form = MaterialEntryForm()
 
     if form.validate_on_submit():
@@ -272,6 +289,7 @@ def add_material():
 
 @app.route('/add_machinery', methods=['GET', 'POST'], strict_slashes=False)
 def add_machinery():
+    """Redirects to machinery form"""
     form = MachineryEntryForm()
 
     if form.validate_on_submit():
@@ -311,6 +329,7 @@ def add_machinery():
 
 @app.route('/add_money', methods=['GET', 'POST'], strict_slashes=False)
 def add_money():
+    """Redirects to money form"""
     form = MoneyEntryForm()
     if form.validate_on_submit():
         # Create a Money instance with the form data

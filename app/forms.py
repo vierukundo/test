@@ -1,3 +1,4 @@
+"""Importing different modules"""
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, FileField, SelectField, DateField, DecimalField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Optional, Length
@@ -72,12 +73,14 @@ WAGE_CHOICES = [
 ]
 
 class LoginForm(FlaskForm):
+    """Represents the login form"""
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
 class RegistrationForm(FlaskForm):
+    """Represents user registration form"""
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -86,27 +89,32 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Register')
 
     def validate_username(self, username):
+        """Checks first if user is not registered"""
         from app.models import storage
         user = storage.check_user(User, username=username.data)
         if user is not None:
             raise ValidationError('Please use a different username.')
 
     def validate_email(self, email):
+        """Checks first if user email is not registered"""
         from app.models import storage
         user = storage.load_user_by_email(User, email=email.data)
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
 class ResetPasswordRequestForm(FlaskForm):
+    """represents the password reset form"""
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
 
 class ResetPasswordForm(FlaskForm):
+    """represents the form where user fill new credentials"""
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
 
 class ManpowerEntryForm(FlaskForm):
+    """Represents the manpower form"""
     first_name = StringField('First name', validators=[DataRequired()])
     last_name = StringField('Family name', validators=[DataRequired()])
     sex = StringField('Sex', validators=[DataRequired()])
@@ -122,6 +130,7 @@ class ManpowerEntryForm(FlaskForm):
     wage_per_hour = SelectField('Wage per Hour (USD)', choices=WAGE_CHOICES, validators=[DataRequired()])
 
 class MaterialEntryForm(FlaskForm):
+    """Defines field form for materials"""
     name = StringField('Material Name', validators=[DataRequired()])
     category = StringField('Category of material', validators=[DataRequired()])
     picture = FileField('Upload Picture', validators=[DataRequired()])
@@ -135,6 +144,7 @@ class MaterialEntryForm(FlaskForm):
     vendor_country = StringField('Vendor Country', validators=[Optional()])
 
 class MachineryEntryForm(FlaskForm):
+    """Defines field form for machineries"""
     name = StringField('Machinery Name', validators=[DataRequired()])
     category = StringField('Machinery category', validators=[DataRequired()])
     picture = FileField('Upload Picture', validators=[DataRequired()])
@@ -148,5 +158,6 @@ class MachineryEntryForm(FlaskForm):
     vendor_country = StringField('Vendor Country', validators=[Optional()])
 
 class MoneyEntryForm(FlaskForm):
+    """Defines fields form for manpower"""
     financing_option = TextAreaField('Financing Option', validators=[DataRequired(), Length(max=1024)])
     blog = StringField('Blog', validators=[DataRequired(), Length(max=255)])

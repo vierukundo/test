@@ -15,9 +15,12 @@ div.menu ul {
 div.menu ul li {
   padding: 10px 20px;
 }
-
-div.menu ul li:hover {
-  color: #fff;
+div.menu ul li a {
+  text-decoration: none;
+  color: white;
+}
+div.menu ul li a:hover {
+  color: blue;
   cursor: pointer;
 }
 div.body {
